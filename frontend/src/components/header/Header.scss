@@ -1,0 +1,51 @@
+header {
+  background-color: #123146;
+  color: #ffffff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h3 {
+    margin: 0;
+    font-size: 1.5em;
+
+    span {
+      font-weight: bold;
+      color: rgb(250, 189, 76);
+    }
+  }
+
+  #navmenu {
+    ul {
+        font-size: 16px;
+      list-style-type: none;
+      display: inline;
+
+      li {
+        margin-top: 5px;
+        float: left;
+        margin-right: 50px;
+
+        a {
+          text-decoration: none;
+          color: #ffffff;
+
+          &:hover {
+            color: rgb(209, 209, 209);
+            transition: all 0.3s;
+          }
+        }
+      }
+    }
+  }
+
+  #logregbar {
+    display: inline-block;
+
+    input {
+      margin-right: 5px;
+      padding: 5px;
+    }
+  }
+}
