@@ -5,14 +5,17 @@ RinkedIn is an open-source project for practice based on javascript with React f
 - HTML
 - SCSS (Sass)
 - JavaScript
-- Python
-- React Framework
+- Express Framework (JavaScript) -> Backend
+- React Framework -> Frontend
 - MongoDB (NoSQL Database)
 - Git
 
 
 ### How to Install<br />
+- cd backend
 - npm install
-- install dart-sass (npm install sass)
-- install python
+- node server
+- cd ..
+- cd frontend
+- npm install
 - npm start (Enjoy!)
