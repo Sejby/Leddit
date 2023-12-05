@@ -3,6 +3,7 @@ import './Header.scss'
 import {Routes, Route, Link } from "react-router-dom";
 import Body from '../Body'
 import Contact from '../Contact'
+import About from '../About'
 
 
 function Header() {
@@ -12,8 +13,7 @@ function Header() {
 
       <div id="navmenu">
         <ul>
-          <li><a href="haha">Úvod</a></li>
-          <li><a href="lol">O Aplikaci</a></li>
+          <li><Link to="/o-aplikaci">O Aplikaci</Link></li>
           <li><Link to="/kontakt">Kontakt</Link></li>
         </ul>
 
@@ -26,6 +26,7 @@ function Header() {
 
     <Routes>
       <Route path="/" element={<Body />} />
+      <Route path='/o-aplikaci' element={<About />} />
       <Route path="/kontakt" element={<Contact />} />      
     </Routes>
     </>

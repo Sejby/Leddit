@@ -1,5 +1,5 @@
 header {
-    height: 5%;
+    height: 6%;
     background-color: #123146;
     color: #ffffff;
     padding: 10px;
@@ -7,7 +7,7 @@ header {
     justify-content: space-between;
     align-items: center;
     h3 {
-        padding-left: 1%;
+        padding-left: 50%;
         font-weight: bold;
         margin: 0;
         font-size: 1.5em;
@@ -21,9 +21,10 @@ header {
             list-style-type: none;
             display: inline;
             li {
-                margin-top: 5px;
+                font-weight: bold;
+                margin-top: 10px;
                 float: left;
-                margin-right: 100px;
+                margin-right: 50px;
                 a {
                     text-decoration: none;
                     color: #ffffff;
@@ -35,11 +36,17 @@ header {
             }
         }
         input {
+            font-size: 15px;
+            margin-right: 10px;
             color: black;
             &:focus {
                 outline: 2px solid rgb(106, 69, 29);
                 transition: all 0.3s;
             }
+        }
+
+        button{
+            margin: 5px
         }
     }
 }
