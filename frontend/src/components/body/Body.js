@@ -1,4 +1,5 @@
 import React from 'react'
+import './Body.scss'
 
 function Body() {
   return (
