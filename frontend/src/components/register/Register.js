@@ -1,24 +1,79 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './Register.scss'
+// import axios from 'axios'
 
 function Register() {
+  
+  const [email, setEmail] = useState()
+  const [pwd, setPwd] = useState()
+  const [pwd_repeat,setPwdRepeat] = useState()
+
+  function verifyPassword(pwd,pwd_repeat){
+    if (pwd === pwd_repeat) {
+      console.log("Hesla se shodují");
+      return true
+    }
+    else{
+      alert("Hesla se neshodují! Zkuste to znovu:")
+      return false
+    }
+  }
+
+  function validateEmail(email){
+    const znaky = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
+    if (email === ""){
+      alert("Zadejte email:")
+    }
+    else if (znaky.test(email)){
+      return true
+    }
+    else if (!znaky.test(email)){
+      alert("Neplatný email! Zkuste to znovu.")
+      return false
+    }
+  }
+
+  function validatePwd(pwd){
+    const znaky = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{6,}$/
+    if (pwd === ""){
+      alert("Zadejte heslo:")
+      return false
+    }
+    else if (znaky.test(pwd)){
+      return true
+    }
+    else if (!znaky.test(pwd)){
+      alert("Neplatné heslo! Zkuste to znovu.")
+      return false
+    }
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(email,pwd,pwd_repeat);
+    if (validateEmail(email) && validatePwd(pwd) && verifyPassword(pwd, pwd_repeat)){
+      
+    }
+  }
+
   return (
     <div id='registrace'>
+      <h3 id='nadpis'>Registrace</h3>
       <form>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email adresa:</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-          <div id="emailHelp" class="form-text">Vaše informace nesdílíme s třetí stranou.</div>
+        <div className="mb-3">
+          <label htmlFor="emailinput" className="form-label">Zadejte emailovou adresu:</label>
+          <input type="email" onChange={(e) => setEmail(e.target.value)} className="form-control" id="emailinput" aria-describedby="emailHelp" />
         </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Heslo:</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" />
+        <div className="mb-3">
+          <label htmlFor="pwdinput" className="form-label">Zadejte heslo:</label>
+          <input type="password" onChange={(e) => setPwd(e.target.value)} className="form-control" id="pwdinput" />
+          <div className="form-text help">Heslo musí obsahovat alespoň 6 znaků, 1 číslici a 1 velké písmeno</div>
         </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Heslo znovu:</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" />
+        <div className="mb-3">
+          <label htmlFor="pwdrepeatinput" className="form-label">Zadejte heslo znovu:</label>
+          <input type="password" onChange={(e) => setPwdRepeat(e.target.value)} className="form-control" id="pwdrepeatinput" />
         </div>
-        <button type="submit" class="btn btn-danger">Registrovat</button>
+        <button type="submit" onClick={handleSubmit} className="btn btn-success">Registrovat</button>
       </form>
     </div>
   )

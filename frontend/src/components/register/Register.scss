@@ -1,10 +1,38 @@
 #registrace {
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
     color: white;
-    width: 40%;
-    margin: auto;
-    padding: 80px;
+    width: 30%;
+    padding: 50px;
     background-color: rgb(45, 45, 45);
+    border-radius: 5px;
     label {
         color: white;
+    }
+
+    #nadpis{
+        text-decoration: underline;
+        text-decoration-color: rgb(250, 189, 76);
+        padding-bottom: 30px;
+        font-weight: bold;
+        font-size: 32px;
+    }
+
+    form{
+        label{
+            font-size: 14px;
+        }
+
+        .help{
+            color: white;
+            font-size: 12px;
+        }
+
+        button{
+            color: white;
+            border-color: #123146;
+            background-color: #123146 !important;
+        }
     }
 }
