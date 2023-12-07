@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import './Register.scss'
-// import axios from 'axios'
+import axios from 'axios'
 
 function Register() {
   
@@ -52,7 +52,9 @@ function Register() {
     e.preventDefault()
     console.log(email,pwd,pwd_repeat);
     if (validateEmail(email) && validatePwd(pwd) && verifyPassword(pwd, pwd_repeat)){
-      
+      axios.post('http://localhost:5000/registrace',{email, pwd})
+      .then(result => console.log(result))
+      .catch(err => console.log(err))
     }
   }
 

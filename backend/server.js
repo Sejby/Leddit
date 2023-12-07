@@ -1,9 +1,15 @@
 const express = require('express')
+const mongoose = require("mongoose")
+const cors = require("cors")
 const app = express()
 
+app.use(cors())
+app.use(express.json())
 
-app.get("/api", (req, res) => {
-    res.json({ "users": ["user1", "user2"] })
+mongoose.connect("mongodb://localhost:27017/DB")
+
+app.post("/registrace", (req, res) => {
+    console.log(req);
 })
 
 app.listen(5000, () => {
