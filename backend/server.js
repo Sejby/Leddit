@@ -17,6 +17,18 @@ app.post("/registrace", (req, res) => {
         .catch(err => res.json(err))
 })
 
+app.post("/prihlaseni", (req, res) => {
+    UserModel.findOne({ $or: [{ username: req.body.username }, { email: req.body.username }] }).exec()
+        .then(username => {
+            if (username) {
+                res.json(username);
+            } else {
+                res.json({ message: "Uživatel nenalezen" });
+            }
+        })
+
+})
+
 app.listen(5000, () => {
     console.log("Server listening on :5000");
 })
