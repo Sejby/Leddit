@@ -6,9 +6,10 @@ import { useNavigate } from "react-router-dom";
 function Register() {
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
-  const [pwd, setPwd] = useState();
+  let [pwd, setPwd] = useState();
   const [pwd_repeat, setPwdRepeat] = useState();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const bcrypt = require('bcryptjs-react')
 
   function verifyPassword(pwd, pwd_repeat) {
     if (pwd === pwd_repeat) {
@@ -25,7 +26,7 @@ function Register() {
       console.log("uživatelské jméno má" + username.trim().length + "znaků");
       return true;
     } else {
-      alert("Neplatné uživatelské jméno!")
+      alert("Neplatné uživatelské jméno!");
       return false;
     }
   }
@@ -55,6 +56,10 @@ function Register() {
     }
   }
 
+  function encryptPassword(pwd) {
+    return bcrypt.hashSync(pwd, 10);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
@@ -63,12 +68,14 @@ function Register() {
       validatePwd(pwd) &&
       verifyPassword(pwd, pwd_repeat)
     ) {
+      pwd = encryptPassword(pwd)
       axios
-        .post("http://localhost:5000/registrace", { username, email, pwd })
-        .then(result => {console.log(result)
-          navigate("/prihlaseni")
+        .post("http://localhost:5000/registrace", { username, email, pwd})
+        .then((result) => {
+          console.log(result);
+          navigate("/prihlaseni");
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
     }
   };
 
