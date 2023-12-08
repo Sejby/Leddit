@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "./Register.scss";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [pwd, setPwd] = useState();
   const [pwd_repeat, setPwdRepeat] = useState();
+  const navigate = useNavigate()
 
   function verifyPassword(pwd, pwd_repeat) {
     if (pwd === pwd_repeat) {
@@ -63,8 +65,10 @@ function Register() {
     ) {
       axios
         .post("http://localhost:5000/registrace", { username, email, pwd })
-        .then((result) => console.log(result))
-        .catch((err) => console.log(err));
+        .then(result => {console.log(result)
+          navigate("/prihlaseni")
+        })
+        .catch(err => console.log(err));
     }
   };
 
