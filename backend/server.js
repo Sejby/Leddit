@@ -2,14 +2,17 @@ const express = require('express')
 const mongoose = require("mongoose")
 const cors = require("cors")
 const app = express()
+const UserModel = require('./models/UserModel')
 
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect("mongodb://localhost:27017/DB")
+mongoose.connect("mongodb://localhost:27017/rinkedin")
 
 app.post("/registrace", (req, res) => {
-    console.log(req);
+    UserModel.create(req.body)
+    .then(users => res.json(users))
+    .catch(err => res.json(err))
 })
 
 app.listen(5000, () => {

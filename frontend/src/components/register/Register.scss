@@ -1,3 +1,7 @@
+body{
+    background-color: rgb(88, 88, 88);
+}
+
 #registrace {
     margin-top: 5%;
     margin-left: auto;
@@ -31,7 +35,7 @@
 
         button{
             color: white;
-            border-color: #123146;
+            border-color: #123146 1px solid !important;
             background-color: #123146 !important;
         }
     }
