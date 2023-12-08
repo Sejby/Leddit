@@ -70,7 +70,7 @@ function Register() {
     ) {
       pwd = encryptPassword(pwd)
       axios
-        .post("http://localhost:5000/registrace", { username, email, pwd})
+        .post("http://localhost:5000/registrace", {username, email, pwd})
         .then((result) => {
           console.log(result);
           navigate("/prihlaseni");
