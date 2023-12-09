@@ -1,24 +1,22 @@
 import React, { useState } from "react";
 import "./Login.scss";
 import axios from "axios";
-import { verifyData } from './Controller'
-import {useNavigate} from 'react-router-dom'
+import { verifyData } from "./Controller";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   let [pwd, setPwd] = useState();
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .post("http://localhost:5000/prihlaseni", { username, pwd })
       .then((result) => {
-        verifyData(username, pwd, result, navigate)
+        verifyData(username, pwd, result, navigate);
       })
       .catch((err) => console.log(err));
-
   };
 
   return (
