@@ -1,11 +1,7 @@
 import React from "react";
 import "./Header.scss";
-import { Routes, Route, Link } from "react-router-dom";
-import Body from "../body/Body";
-import Contact from "../contact/Contact";
-import About from "../about/About";
-import Register from "../register/Register";
-import Login from "../login/Login";
+import { Link } from "react-router-dom";
+
 import LoggedInNavMenu from "./LoggedInNavMenu";
 import NotLoggedInNavMenu from "./NotLoggedInNavMenu";
 
@@ -34,18 +30,9 @@ function Header() {
           {isLoggedIn ?
            <LoggedInNavMenu />: 
           <NotLoggedInNavMenu />}
-
-         
+      
         </div>
       </header>
-
-      <Routes>
-        <Route path="/" element={<Body />} />
-        <Route path="/o-aplikaci" element={<About />} />
-        <Route path="/kontakt" element={<Contact />} />
-        <Route path="/registrace" element={<Register />} />
-        <Route path="/prihlaseni" element={<Login />} />
-      </Routes>
     </>
   );
 }
