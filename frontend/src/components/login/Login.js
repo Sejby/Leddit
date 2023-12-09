@@ -1,42 +1,24 @@
 import React, { useState } from "react";
 import "./Login.scss";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { verifyData } from './Controller'
+import {useNavigate} from 'react-router-dom'
 
 function Login() {
   const [username, setUsername] = useState();
+  const navigate = useNavigate()
   let [pwd, setPwd] = useState();
-  const bcrypt = require("bcryptjs-react");
 
-  function verifyData(username, pwd, result){
-    console.log(verifyPassword(pwd,result))
-    if(result.data.username == username && verifyPassword(pwd, result)){
-      console.log("Jsi přihlášen");
-    }else{
-      console.log("Ty jsi ale budulínek!");
-    }
-  }
-
-  async function verifyPassword(pwd, result){
-    var hodnota
-    hodnota = await bcrypt.compare(pwd,result.data.pwd)
-    return hodnota
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      // Validate
-        1==1
-    ) {
-      axios
-        .post("http://localhost:5000/prihlaseni", {username, pwd})
-        .then((result) => {
-          console.log(result)
-          verifyData(username,pwd,result)
-        })
-        .catch((err) => console.log(err));
-    }
+    axios
+      .post("http://localhost:5000/prihlaseni", { username, pwd })
+      .then((result) => {
+        verifyData(username, pwd, result, navigate)
+      })
+      .catch((err) => console.log(err));
+
   };
 
   return (
