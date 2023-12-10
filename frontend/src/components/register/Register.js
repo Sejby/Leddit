@@ -19,7 +19,11 @@ function Register() {
         .post("http://localhost:5000/registrace", { username, email, pwd })
         .then((result) => {
           console.log(result);
-          navigate("/prihlaseni");
+          if(result.data.message === "userExists"){
+            alert("Uživatel se stejným jménem nebo emailem již existuje!")
+          }else{
+            navigate("/prihlaseni");
+          }
         })
         .catch((err) => console.log(err));
     }
