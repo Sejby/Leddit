@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 
@@ -6,7 +6,11 @@ import LoggedInNavMenu from "./LoggedInNavMenu";
 import NotLoggedInNavMenu from "./NotLoggedInNavMenu";
 
 function Header() {
-  const isLoggedIn = window.localStorage.getItem("isLoggedIn");
+  const [isLoggedIn, setIsLoggedIn] = useState()
+
+  useEffect(() => {
+    setIsLoggedIn(window.localStorage.getItem("isLoggedIn"))
+  })
 
   return (
     <>
@@ -26,11 +30,7 @@ function Header() {
               <Link to="/kontakt">Kontakt</Link>
             </li>
           </ul>
-
-          {isLoggedIn ?
-           <LoggedInNavMenu />: 
-          <NotLoggedInNavMenu />}
-      
+          {isLoggedIn ? <LoggedInNavMenu /> : <NotLoggedInNavMenu />}
         </div>
       </header>
     </>

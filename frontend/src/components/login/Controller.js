@@ -6,8 +6,10 @@ async function verifyData(username, pwd, result, navigate) {
     (await verifyPassword(pwd, result))
   ) {
     window.localStorage.setItem("isLoggedIn", true)
-    alert("Přihlášení úspěšné!")
     navigate("/")
+    alert("Přihlášení úspěšné!")
+    window.location.reload(true);
+    
   } else {
     alert("Špatně zadané uživatelské jméno nebo heslo!")
     navigate("/prihlaseni")
