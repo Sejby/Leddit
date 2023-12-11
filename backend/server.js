@@ -43,6 +43,10 @@ app.post("/pridatprispevek", (req, res) => {
         .catch(err => res.json(err))
 })
 
+app.post("/nactiprispevky", (req, res) => {
+    PostModel.find()
+})
+
 app.listen(5000, () => {
     console.log("Server listening on :5000");
 })
