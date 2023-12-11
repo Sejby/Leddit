@@ -12,13 +12,21 @@ app.use(express.json())
 mongoose.connect(conn)
 
 app.post("/registrace", (req, res) => {
-    UserModel.create(req.body)
-        .then(users => res.json(users))
-        .catch(err => res.json(err))
+    UserModel.findOne({ $or: [{ username: req.body.username }, { email: req.body.email }] }).exec()
+        .then(user => {
+            if (user) {
+                res.json({message: "userExists"})
+            }
+            else {
+                UserModel.create(req.body)
+                    .then(users => res.json(users))
+                    .catch(err => res.json(err))
+            }
+        })
 })
 
 app.post("/prihlaseni", (req, res) => {
-    UserModel.findOne({ $or: [{ username: req.body.username }, { email: req.body.username }] }).exec()
+    UserModel.findOne({ $or: [{ username: req.body.username }, { email: req.body.email }] }).exec()
         .then(username => {
             if (username) {
                 res.json(username);

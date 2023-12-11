@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Register.scss";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { verifyData, encryptPassword} from "./Controller";
 
 function Register() {
   const [username, setUsername] = useState();
@@ -9,71 +10,20 @@ function Register() {
   let [pwd, setPwd] = useState();
   const [pwd_repeat, setPwdRepeat] = useState();
   const navigate = useNavigate();
-  const bcrypt = require('bcryptjs-react')
-
-  function verifyPassword(pwd, pwd_repeat) {
-    if (pwd === pwd_repeat) {
-      console.log("Hesla se shodují");
-      return true;
-    } else {
-      alert("Hesla se neshodují! Zkuste to znovu:");
-      return false;
-    }
-  }
-
-  function validateUsername(username) {
-    if (username.trim().length >= 4) {
-      console.log("uživatelské jméno má" + username.trim().length + "znaků");
-      return true;
-    } else {
-      alert("Neplatné uživatelské jméno!");
-      return false;
-    }
-  }
-
-  function validateEmail(email) {
-    const znaky = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-    if (email === "") {
-      alert("Zadejte email:");
-    } else if (znaky.test(email)) {
-      return true;
-    } else if (!znaky.test(email)) {
-      alert("Neplatný email! Zkuste to znovu.");
-      return false;
-    }
-  }
-
-  function validatePwd(pwd) {
-    const znaky = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{6,}$/;
-    if (pwd === "") {
-      alert("Zadejte heslo:");
-      return false;
-    } else if (znaky.test(pwd)) {
-      return true;
-    } else if (!znaky.test(pwd)) {
-      alert("Neplatné heslo! Zkuste to znovu.");
-      return false;
-    }
-  }
-
-  function encryptPassword(pwd) {
-    return bcrypt.hashSync(pwd, 10);
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      validateUsername(username) &&
-      validateEmail(email) &&
-      validatePwd(pwd) &&
-      verifyPassword(pwd, pwd_repeat)
-    ) {
-      pwd = encryptPassword(pwd)
+    if (verifyData(username, email, pwd, pwd_repeat)) {
+      pwd = encryptPassword(pwd);
       axios
-        .post("http://localhost:5000/registrace", {username, email, pwd})
+        .post("http://localhost:5000/registrace", { username, email, pwd })
         .then((result) => {
           console.log(result);
-          navigate("/prihlaseni");
+          if(result.data.message === "userExists"){
+            alert("Uživatel se stejným jménem nebo emailem již existuje!")
+          }else{
+            navigate("/prihlaseni");
+          }
         })
         .catch((err) => console.log(err));
     }
