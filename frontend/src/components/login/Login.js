@@ -9,10 +9,9 @@ function Login() {
   const bcrypt = require("bcryptjs-react");
 
   function verifyData(username, pwd, result){
-    console.log(verifyPassword(pwd,result))
-    if(result.data.username == username && verifyPassword(pwd, result)){
+    if(result.data.username == username && verifyPassword(pwd, result) == true){
       console.log("Jsi přihlášen");
-    }else{
+    }else if (result.data.username != username || verifyPassword(pwd, result) == false) {
       console.log("Ty jsi ale budulínek!");
     }
   }
@@ -20,6 +19,7 @@ function Login() {
   async function verifyPassword(pwd, result){
     var hodnota
     hodnota = await bcrypt.compare(pwd,result.data.pwd)
+    console.log(hodnota);
     return hodnota
   }
 
