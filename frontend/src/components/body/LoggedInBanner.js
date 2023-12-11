@@ -3,18 +3,22 @@ import React, { useEffect, useState } from "react";
 
 function LoggedInBanner() {
   const [text, setText] = useState();
-  const [username, setUsername] = useState()
+  const [username, setUsername] = useState();
 
   useEffect(() => {
     setUsername(window.localStorage.getItem("username"))
-  }, [])
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setText();
+    const date = new Date().toString()
+    console.log(date)
 
     if (text !== "") {
-      axios.post("/pridatprispevek", { username, text }).then((res) => res.json());
+      axios
+        .post("http://localhost:5000/pridatprispevek", { username, text, date})
+        .then((result) => {console.log(result)})
+        .catch((err) => {console.log(err)})
     }
   };
 

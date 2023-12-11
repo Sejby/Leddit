@@ -3,6 +3,7 @@ const mongoose = require("mongoose")
 const cors = require("cors")
 const app = express()
 const UserModel = require('./models/UserModel')
+const PostModel = require("./models/PostModel")
 
 const conn = "mongodb://localhost:27017/rinkedin"
 
@@ -15,9 +16,8 @@ app.post("/registrace", (req, res) => {
     UserModel.findOne({ $or: [{ username: req.body.username }, { email: req.body.email }] }).exec()
         .then(user => {
             if (user) {
-                res.json({message: "userExists"})
-            }
-            else {
+                res.json({ message: "userExists" })
+            } else {
                 UserModel.create(req.body)
                     .then(users => res.json(users))
                     .catch(err => res.json(err))
@@ -35,6 +35,12 @@ app.post("/prihlaseni", (req, res) => {
             }
         })
 
+})
+
+app.post("/pridatprispevek", (req, res) => {
+    PostModel.create(req.body)
+        .then(posts => res.json(posts))
+        .catch(err => res.json(err))
 })
 
 app.listen(5000, () => {
