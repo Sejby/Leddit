@@ -6,6 +6,7 @@ async function verifyData(username, pwd, result, navigate) {
     (await verifyPassword(pwd, result))
   ) {
     window.localStorage.setItem("isLoggedIn", true)
+    window.localStorage.setItem("username", username)
     navigate("/")
     alert("Přihlášení úspěšné!")
     window.location.reload(true);
