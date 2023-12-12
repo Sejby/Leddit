@@ -10,10 +10,6 @@ function verifyPassword(pwd, pwd_repeat) {
   }
 }
 
-function verifyDuplicateUserName(username, email){
-    
-}
-
 function validateUsername(username) {
   if (username.trim().length >= 4) {
     console.log("uživatelské jméno má" + username.trim().length + "znaků");
