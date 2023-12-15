@@ -20,7 +20,7 @@ function Body() {
   }, [isLoggedIn, polePrispevku]);
 
   return (
-    <>
+    <div id="body">
       {isLoggedIn ? (
         <div>
           Příhlašený: {isLoggedIn}
@@ -30,12 +30,13 @@ function Body() {
         <div>Nepřihlášený: {isLoggedIn} </div>
       )}
 
-      <div id="posty">Posty:</div>
-      <Post data={polePrispevku[0]} i={0}/>
-      {polePrispevku?.forEach((element, i) => {
-        <Post data={polePrispevku[i]} i={i} />
-      })}
-    </>
+      <div id="posty">
+        <Post data={polePrispevku[0]} i={0} />
+        {polePrispevku.map((element, i) => (
+          <Post key={i} data={polePrispevku[i]} i={i} />
+        ))}
+      </div>
+    </div>
   );
 }
 

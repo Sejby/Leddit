@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
+import './Post.scss'
 
 function Post(props) {
-  const [idx, setIdx] = useState()
-  const [data, setData] = useState()
+  const [idx, setIdx] = useState();
+  const [data, setData] = useState();
 
   useEffect(() => {
-    setIdx(props.i)
-    setData(props.data)
-  }, [props.i, props.data, data, idx])
+    setIdx(props.i);
+    setData(props.data);
+  }, [props.i, props.data, data, idx]);
 
-  return (<>
-    <h3>{data?.username}</h3>
-    <p>{idx}</p>
-    <p>{data?.text}</p>
-    <p>{data?.created_on}</p>
-  </>
-  )
+  return (
+    <div id="post">
+      <h3 id="nadpis-postu">{data?.username}</h3>
+      <p id="text-postu">{data?.text}</p>
+      <p id="datum">{data?.created_on}</p>
+    </div>
+  );
 }
 
-export default Post
+export default Post;
