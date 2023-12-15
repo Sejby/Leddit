@@ -8,7 +8,7 @@ function LoggedInNavMenu() {
   return (
     <>
       <Link to="/nastaveni">
-        <button type="submit" className="btn btn-light btn-sm"> // Idealně dát do jednoho souboru s notloggedinheaderem
+        <button type="submit" className="btn btn-light btn-sm">
           <FontAwesomeIcon icon={faUser}/> Profil
         </button>
       </Link>

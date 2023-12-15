@@ -2,39 +2,39 @@ import React, { useState, useEffect } from "react";
 import LoggedInBanner from "./LoggedInBanner";
 import "./Body.scss";
 import Post from "./post/Post";
-import { nactiPrispevky } from "./Posts_Req";
-
+import axios from "axios";
 
 function Body() {
   const [isLoggedIn, setIsLoggedIn] = useState();
-  const [polePrispevku, setPolePrispevku] = useState()
-
- 
+  const [polePrispevku, setPolePrispevku] = useState([]);
 
   useEffect(() => {
-    setIsLoggedIn(window.localStorage.getItem("isLoggedIn"))
-    setPolePrispevku(nactiPrispevky())
-    console.log(polePrispevku) // vrací promise, idk how to fix
-  }, [])
+    setIsLoggedIn(window.localStorage.getItem("isLoggedIn"));
 
+    axios
+      .post("http://localhost:5000/nactiprispevky")
+      .then((res) => {
+        setPolePrispevku(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, [isLoggedIn, polePrispevku]);
 
   return (
     <>
       {isLoggedIn ? (
-        <div>Příhlašený: {isLoggedIn}
+        <div>
+          Příhlašený: {isLoggedIn}
           <LoggedInBanner />
-
         </div>
       ) : (
         <div>Nepřihlášený: {isLoggedIn} </div>
       )}
 
-      <div id="posty">Posty:
-        <Post />
-
-
-
-      </div>
+      <div id="posty">Posty:</div>
+      <Post data={polePrispevku[0]} i={0}/>
+      {polePrispevku?.forEach((element, i) => {
+        <Post data={polePrispevku[i]} i={i} />
+      })}
     </>
   );
 }

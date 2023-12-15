@@ -1,12 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
-function Post() {
+function Post(props) {
+  const [idx, setIdx] = useState()
+  const [data, setData] = useState()
 
-useEffect(() => {
-})
-    
-  return (
-    <div>Post</div>
+  useEffect(() => {
+    setIdx(props.i)
+    setData(props.data)
+  }, [props.i, props.data, data, idx])
+
+  return (<>
+    <h3>{data?.username}</h3>
+    <p>{idx}</p>
+    <p>{data?.text}</p>
+    <p>{data?.created_on}</p>
+  </>
   )
 }
 
