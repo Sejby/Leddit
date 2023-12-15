@@ -44,7 +44,9 @@ app.post("/pridatprispevek", (req, res) => {
 })
 
 app.post("/nactiprispevky", (req, res) => {
-    PostModel.find()
+    PostModel.find({})
+        .then(posts => res.json(posts))
+        .catch(err => res.json(err))
 })
 
 app.listen(5000, () => {
