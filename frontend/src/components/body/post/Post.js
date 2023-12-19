@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Reply from "./Reply";
 import './Post.scss'
 
 function Post(props) {
@@ -6,7 +7,7 @@ function Post(props) {
   const [data, setData] = useState();
 
   useEffect(() => {
-    setIdx(props.i);
+    setIdx(props.idx);
     setData(props.data);
   }, [props.i, props.data, data, idx]);
 
@@ -15,6 +16,7 @@ function Post(props) {
       <h3 id="nadpis-postu">{data?.username}</h3>
       <p id="text-postu">{data?.text}</p>
       <p id="datum">{data?.created_on}</p>
+      <Reply idx={idx} />
     </div>
   );
 }

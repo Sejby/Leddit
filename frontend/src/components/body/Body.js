@@ -31,9 +31,8 @@ function Body() {
       )}
 
       <div id="posty">
-        <Post data={polePrispevku[0]} i={0} />
         {polePrispevku.map((element, i) => (
-          <Post key={i} data={polePrispevku[i]} i={i} />
+          <Post key={i} data={polePrispevku[i]} idx={i} />
         ))}
       </div>
     </div>
