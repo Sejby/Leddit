@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Reply from "./Reply";
-import './Post.scss'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHeartCirclePlus,
+  faHeartCircleMinus,
+  faComment,
+  faRightLeft,
+} from "@fortawesome/free-solid-svg-icons";
+import Reply from "./Comment";
+import "./Post.scss";
 
 function Post(props) {
   const [idx, setIdx] = useState();
@@ -17,6 +24,22 @@ function Post(props) {
       <p id="text-postu">{data?.text}</p>
       <p id="datum">{data?.created_on}</p>
       <Reply idx={idx} />
+      <div className="reakce">
+        0
+        <FontAwesomeIcon
+          icon={faHeartCirclePlus}
+          style={{ color: "#18cc00" }}
+        />
+        0
+        <FontAwesomeIcon
+          icon={faHeartCircleMinus}
+          style={{ color: "#e60000" }}
+        />
+        0
+        <FontAwesomeIcon icon={faComment} /> 
+        0
+        <FontAwesomeIcon icon={faRightLeft} /> 
+      </div>
     </div>
   );
 }
