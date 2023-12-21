@@ -1,26 +1,28 @@
-#post{
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: -1px;
-    padding: 5px;
-    border: 1px solid rgb(122, 122, 122);
-    width: 40%;
+#post {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -1px;
+  padding: 5px;
+  border: 1px solid rgb(122, 122, 122);
+  width: 40%;
 
-    #nadpis-postu{
-        font-size: 30px;
-    }
+  #nadpis-postu {
+    font-size: 20px;
+  }
 
-    #text-postu{
-        font-size: 16px;
-    }
+  #text-postu {
+    font-size: 20px;
+  }
 
-    .reakce{
-    }
+  .reakce {
+    display: inline-block;
+    font-size: 20px;
+    margin: 5px;
+  }
 
-    .reakce *{
-        display: inline-block;
-        padding-right: 50px;
-        padding-left: 20px;
-        font-size: 20px;
-    }
+  .ikona {
+    padding-right: 80px;
+    padding-left: 20px;
+    font-size: 20px;
+  }
 }

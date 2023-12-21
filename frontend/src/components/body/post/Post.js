@@ -6,7 +6,7 @@ import {
   faComment,
   faRightLeft,
 } from "@fortawesome/free-solid-svg-icons";
-import Reply from "./Comment";
+import Comment from "./Comment";
 import "./Post.scss";
 
 function Post(props) {
@@ -20,25 +20,28 @@ function Post(props) {
 
   return (
     <div id="post">
+      <img src="" alt="" id="profile-obrazek" />
       <h3 id="nadpis-postu">{data?.username}</h3>
       <p id="text-postu">{data?.text}</p>
       <p id="datum">{data?.created_on}</p>
-      <Reply idx={idx} />
+      <Comment idx={idx} />
       <div className="reakce">
         0
         <FontAwesomeIcon
           icon={faHeartCirclePlus}
           style={{ color: "#18cc00" }}
+          className="ikona"
         />
         0
         <FontAwesomeIcon
           icon={faHeartCircleMinus}
           style={{ color: "#e60000" }}
+          className="ikona"
         />
         0
-        <FontAwesomeIcon icon={faComment} /> 
+        <FontAwesomeIcon icon={faComment} className="ikona" />
         0
-        <FontAwesomeIcon icon={faRightLeft} /> 
+        <FontAwesomeIcon icon={faRightLeft} className="ikona" />
       </div>
     </div>
   );
