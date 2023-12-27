@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Reakce from "./Reakce";
+
 import {
   faHeartCirclePlus,
   faHeartCircleMinus,
@@ -16,7 +17,7 @@ function Post(props) {
   useEffect(() => {
     setIdx(props.idx);
     setData(props.data);
-  }, [props.i, props.data, data, idx]);
+  }, [props.idx, props.data, data, idx]);
 
   return (
     <div id="post">
@@ -26,22 +27,18 @@ function Post(props) {
       <p id="datum">{data?.created_on}</p>
       <Comment idx={idx} />
       <div className="reakce">
-        0
-        <FontAwesomeIcon
+        <Reakce
           icon={faHeartCirclePlus}
           style={{ color: "#18cc00" }}
-          className="ikona"
+          class="ikona"
         />
-        0
-        <FontAwesomeIcon
+        <Reakce
           icon={faHeartCircleMinus}
           style={{ color: "#e60000" }}
-          className="ikona"
+          class="ikona"
         />
-        0
-        <FontAwesomeIcon icon={faComment} className="ikona" />
-        0
-        <FontAwesomeIcon icon={faRightLeft} className="ikona" />
+        <Reakce icon={faComment} class="ikona" />
+        <Reakce icon={faRightLeft} class="ikona" />
       </div>
     </div>
   );
