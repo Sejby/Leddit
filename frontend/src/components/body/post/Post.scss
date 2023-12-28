@@ -1,16 +1,36 @@
-#post {
+.post {
   margin-left: auto;
   margin-right: auto;
   margin-top: -1px;
-  padding: 5px;
-  border: 1px solid rgb(122, 122, 122);
+  border-top: 1px solid #242C2E;
+  border-bottom: 1px solid #242C2E;
   width: 40%;
 
-  #nadpis-postu {
+  .nadpis-postu {
     font-size: 20px;
   }
 
-  #text-postu {
+  .text-postu {
     font-size: 20px;
   }
+
+  .ikona {
+    padding-right: 80px;
+    padding-left: 20px;
+    font-size: 20px;
+  }
+  
+  .reakce {
+    display: inline-block;
+    font-size: 20px;
+  }
+}
+
+.content-wrapper{
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.content-wrapper:hover{
+  background-color: #283f45;
 }

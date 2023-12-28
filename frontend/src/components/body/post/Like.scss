@@ -1,0 +1,22 @@
+.like-wrapper{
+    padding: 5px;
+    background-color: #213439;
+    border-radius: 5px;
+}
+
+
+#pocetLiku{
+ padding: 0 10px 0 10px;
+ display: inline;
+}
+
+
+.like:hover{
+    color: rgb(31, 186, 31);
+    cursor: pointer;
+}
+
+.dislike:hover{
+    color: orangered;
+    cursor: pointer;
+}

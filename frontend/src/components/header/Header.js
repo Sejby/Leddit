@@ -10,14 +10,14 @@ function Header() {
 
   useEffect(() => {
     setIsLoggedIn(window.localStorage.getItem("isLoggedIn"))
-  })
+  }, [isLoggedIn])
 
   return (
     <>
       <header>
         <Link to="/" style={{ textDecoration: "none", color: "white" }}>
           <h3>
-            Rinked<span>In</span>
+            <span>le</span>ddit
           </h3>
         </Link>
 
